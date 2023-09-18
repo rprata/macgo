@@ -5,7 +5,7 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/rprata/macgo/vendor"
+	"github.com/rprata/macgo/lookup"
 )
 
 // GenerateRandomMACAddress generates a random MAC address
@@ -27,7 +27,7 @@ func GenerateRandomMACAddress() string {
 
 // GenerateRandomMACAddressByVendor generates a random MAC address for a given vendor name
 func GenerateRandomMACAddressByVendor(vendorName string) string {
-	if vendorPrefixArr := vendor.GetPrefixList(vendorName); len(vendorPrefixArr) > 0 {
+	if vendorPrefixArr := lookup.GetPrefixList(vendorName); len(vendorPrefixArr) > 0 {
 		r := rand.New(rand.NewSource(time.Now().UnixNano()))
 
 		var vendorPrefix string = ""

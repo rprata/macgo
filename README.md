@@ -67,7 +67,7 @@ package main
 
 import (
     "fmt"
-    "github.com/rprata/macgo/vendor"
+    "github.com/rprata/macgo/lookup"
 )
 
 func main() {
