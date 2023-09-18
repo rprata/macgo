@@ -3,14 +3,16 @@ package app
 import (
 	"fmt"
 
+	"github.com/rprata/macgo/checker"
 	"github.com/rprata/macgo/generator"
+	"github.com/rprata/macgo/lookup"
 	"github.com/urfave/cli"
 )
 
 // Generate returns a new cli.App with our desired configuration
 func Generate() *cli.App {
 	app := cli.NewApp()
-	app.Name = "MACGO CLI"
+	app.Name = "MACGo CLI"
 	app.Usage = "MAC Address Generator and Vendor Lookup"
 	app.Version = "0.0.1"
 	app.Commands = []cli.Command{
@@ -19,6 +21,12 @@ func Generate() *cli.App {
 			Aliases: []string{"g"},
 			Usage:   "Generate a random MAC address",
 			Action:  generateMacAddress,
+			Flags: []cli.Flag{
+				cli.StringFlag{
+					Name:  "vendor, v",
+					Usage: "Generate a random MAC address for a given vendor name",
+				},
+			},
 		},
 		{
 			Name:    "lookup",
@@ -31,24 +39,30 @@ func Generate() *cli.App {
 }
 
 func generateMacAddress(c *cli.Context) {
-	macAddress := generator.GenerateRandomMACAddress()
+	vendorName := c.String("vendor")
+	var macAddress string = ""
+	if vendorName != "" {
+		macAddress = generator.GenerateRandomMACAddressByVendor(vendorName)
+	} else {
+		macAddress = generator.GenerateRandomMACAddress()
+	}
 	fmt.Println(macAddress)
 }
 
 func lookupVendor(c *cli.Context) {
-	// macAddress := c.Args().First()
-	// if macAddress == "" {
-	// 	fmt.Println("ERROR: Please provide a MAC address")
-	// 	return
-	// }
-	// if !checker.IsValidMACAddress(macAddress) {
-	// 	fmt.Println("ERROR: Invalid MAC address")
-	// 	return
-	// }
-	// vendorInfo, err := vendor.GetVendorInfo(macAddress)
-	// if err != nil {
-	// 	fmt.Println(err)
-	// 	return
-	// }
-	// fmt.Println(vendorInfo)
+	macAddress := c.Args().First()
+	if macAddress == "" {
+		fmt.Println("ERROR: Please provide a MAC address")
+		return
+	}
+	if !checker.IsValidMACAddress(macAddress) {
+		fmt.Println("ERROR: Invalid MAC address")
+		return
+	}
+	vendorInfo, err := lookup.GetVendorInfo(macAddress)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println(vendorInfo)
 }
