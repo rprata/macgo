@@ -59,13 +59,7 @@ Please adhere to the following coding guidelines when contributing to this proje
 
 ## Issues and Bug Reports
 
-If you encounter bugs or issues, please report them by opening an issue on our [GitHub Issue Tracker](https://github.com/yourusername/[Your Project Name]/issues). When reporting issues, provide as much detail as possible, including steps to reproduce the problem.
-
-## Contact
-
-If you have questions or need further assistance, you can reach out to us at your@email.com.
-
-We appreciate your contributions to [Your Project Name] and look forward to working together to make it better!
+If you encounter bugs or issues, please report them by opening an issue on our [GitHub Issue Tracker](https://github.com/rprata/macgo/issues). When reporting issues, provide as much detail as possible, including steps to reproduce the problem.
 
 ## License
 
