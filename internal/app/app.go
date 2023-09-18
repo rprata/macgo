@@ -34,6 +34,12 @@ func Generate() *cli.App {
 			Usage:   "Lookup vendor information for a given MAC address",
 			Action:  lookupVendor,
 		},
+		{
+			Name:    "check",
+			Aliases: []string{"c"},
+			Usage:   "Check if a given MAC address is valid",
+			Action:  isValidMACAddress,
+		},
 	}
 	return app
 }
@@ -65,4 +71,17 @@ func lookupVendor(c *cli.Context) {
 		return
 	}
 	fmt.Println(vendorInfo)
+}
+
+func isValidMACAddress(c *cli.Context) {
+	macAddress := c.Args().First()
+	if macAddress == "" {
+		fmt.Println("ERROR: Please provide a MAC address")
+		return
+	}
+	if checker.IsValidMACAddress(macAddress) {
+		fmt.Println("Valid MAC address")
+	} else {
+		fmt.Println("Invalid MAC address")
+	}
 }

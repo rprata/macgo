@@ -127,9 +127,21 @@ Example:
 macgo lookup 00:1A:2B:3C:4D:5E
 ```
 
-### Version
+#### 3. Verify if MAC address is valid
 
-The current version of the MACGo CLI is "0.0.1."
+Use the `check` command to check if MAC address is valid.
+
+```sh
+macgo check <mac-address>
+```
+
+- `<mac-address>`: The MAC address for which you want to check.
+
+Example:
+
+```sh
+macgo check 00:1A:2B:3C:4D:5E
+```
 
 ### How to Run
 
@@ -166,6 +178,10 @@ Here are some examples of how to use the MACGo CLI:
   macgo lookup 00:1A:2B:3C:4D:5E
   ```
 
+- Verify MAC address (e.g., 00:1A:2B:3C:4D:5E):
+  ```sh
+  macgo check 00:1A:2B:3C:4D:5E
+  ```
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
