@@ -173,6 +173,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Contributing
 
 Contributions to macgo are welcome! Please read our [Contribution Guidelines](CONTRIBUTING.md) for more information on how to get involved.
-```
-
-You can copy the above Markdown content and paste it into your project's README file or Markdown editor.
