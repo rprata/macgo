@@ -31,7 +31,7 @@ import (
 )
 
 func main() {
-    randomMAC := macgo.GenerateRandomMAC()
+    randomMAC := macgo.GenerateRandomMAC(48)
     fmt.Println("Random MAC Address:", randomMAC)
     randomRaspberryPiMAC := generator.GenerateRandomMACAddressByVendor("raspberry")
     fmt.Println("Random MAC Address (Raspberry PI): ", randomRaspberryPiMAC)

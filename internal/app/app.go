@@ -50,7 +50,7 @@ func generateMacAddress(c *cli.Context) {
 	if vendorName != "" {
 		macAddress = generator.GenerateRandomMACAddressByVendor(vendorName)
 	} else {
-		macAddress = generator.GenerateRandomMACAddress()
+		macAddress, _ = generator.GenerateRandomMACAddress(48)
 	}
 	fmt.Println(macAddress)
 }
